@@ -2,12 +2,16 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Selenium](https://img.shields.io/badge/Selenium-Automation-43B02A?logo=selenium&logoColor=white)
-![Batch](https://img.shields.io/badge/Batch-Scripting-4EAA25)
-![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![Selenium](https://img.shields.io/badge/Selenium-Async-2C5BB4?logo=python&logoColor=white)
+![Batch](https://img.shields.io/badge/Batch-CLI-blueviolet)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
 ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)
 
-A high-performance, automated workspace initialization suite built with Python and Selenium. Capable of instantly connecting to the USAS campus network, bypassing captive portals, and securely authenticating into essential academic platforms without user interaction.
+<p align="center">
+  <img src="preview.png" alt="USAS Workspace Launcher Preview" width="800">
+</p>
+
+A high-performance, automated workspace initialization suite built with Python and Selenium. Capable of instantly connecting to the campus network and securely authenticating into essential academic platforms without user interaction.
 
 > [!WARNING]
 > **Educational Purposes Only**: This tool is designed to optimize personal workflow. The authors are not responsible for any misuse.
@@ -15,23 +19,25 @@ A high-performance, automated workspace initialization suite built with Python a
 ## Features
 
 - 🚀 **High Performance**: `eager` page loading strategies and direct JavaScript execution for instantaneous portal bypasses.
-- 🎨 **Modern UI**: Beautiful, color-coded ANSI terminal interface.
-- 🖥️ **Persistent Profiles**: Integrates seamlessly with your primary Google Chrome profile, ensuring your extensions, bookmarks, and standard logins remain intact.
+- 🎨 **Modern UI**: Beautiful, color-coded ANSI terminal interface mimicking a CLI environment.
+- 🖥️ **Persistent Profiles**: Integrates seamlessly with your primary Google Chrome profile, ensuring extensions remain intact.
 - 🔄 **Smart Handling**: Automatically handles locked Chrome profiles with interactive retry loops.
 - 🛡️ **Secure Credentials**: Credentials are encrypted locally via `.env` files and never hard-coded.
-- 🤖 **Auto-Discovery**: Automatically parses generic login fields (username, userid, email, password, etc) for robust portal compatibility.
+- 🤖 **Auto-Discovery**: Automatically parses generic login fields (username, userid, email, password, etc) for robust compatibility.
 - 💻 **CLI & Interactive**: Run it fully automated via the one-click Batch script.
 
 ## Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/zis3c/USAS-Launcher.git
+   git clone https://github.com/zis3c/USAS-Launcher
    cd USAS-Launcher
    ```
 
-2. **Run Initialization**
-   Double-click `USAS_Workspace_Launcher.bat` to automatically install dependencies and build the virtual environment.
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Project Structure
 
@@ -41,14 +47,15 @@ USAS-Launcher/
 ├── USAS_Workspace_Launcher.bat # System orchestrator - handles WiFi, Python venv, and execution
 ├── requirements.txt            # Python dependencies (Selenium, python-dotenv, colorama)
 ├── .env.example                # Template for credentials
+├── preview.png                 # CLI preview screenshot
 ├── TOOL_DOCUMENTATION.md       # Capabilities and awareness guide
 └── CONTRIBUTING.md             # Contribution guidelines
 ```
 
 ## Usage
 
-### Interactive First-Run
-Simply execute `USAS_Workspace_Launcher.bat`. On the first run, the script will securely prompt you for your `WIFI@USAS`, LMS, and VCampus credentials. These are saved to a hidden local `.env` file.
+### Interactive Mode
+Simply execute `USAS_Workspace_Launcher.bat`. On the first run, the script will securely prompt you for your credentials. These are saved to a hidden local `.env` file.
 
 ### Daily Automation
 For every subsequent run, simply execute `USAS_Workspace_Launcher.bat` and watch it automatically:
