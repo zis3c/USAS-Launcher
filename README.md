@@ -22,7 +22,7 @@ A high-performance, automated workspace initialization suite built with Python a
 - 🎨 **Modern UI**: Beautiful, color-coded ANSI terminal interface mimicking a CLI environment.
 - 🖥️ **Persistent Profiles**: Integrates seamlessly with your primary Google Chrome profile, ensuring extensions remain intact.
 - 🔄 **Smart Handling**: Automatically handles locked Chrome profiles with interactive retry loops.
-- 🛡️ **Secure Credentials**: Credentials are encrypted locally via `.env` files and never hard-coded.
+- 🛡️ **Secure Credentials**: Passwords are encrypted directly into the native **Windows Credential Manager** via `keyring`. Only generic IDs are stored in the local `.env` file. Terminal inputs are masked with asterisks using `pwinput`.
 - 🤖 **Auto-Discovery**: Automatically parses generic login fields (username, userid, email, password, etc) for robust compatibility.
 - 💻 **CLI & Interactive**: Run it fully automated via the one-click Batch script.
 
@@ -45,8 +45,8 @@ A high-performance, automated workspace initialization suite built with Python a
 USAS-Launcher/
 ├── usas_auth_controller.py     # Main Python engine - browser automation, credential management
 ├── USAS_Workspace_Launcher.bat # System orchestrator - handles WiFi, Python venv, and execution
-├── requirements.txt            # Python dependencies (Selenium, python-dotenv, colorama)
-├── .env.example                # Template for credentials
+├── requirements.txt            # Python dependencies (Selenium, dotenv, colorama, pwinput, keyring)
+├── .env.example                # Template for ID credentials
 ├── preview.png                 # CLI preview screenshot
 ├── TOOL_DOCUMENTATION.md       # Capabilities and awareness guide
 └── CONTRIBUTING.md             # Contribution guidelines
@@ -55,7 +55,7 @@ USAS-Launcher/
 ## Usage
 
 ### Interactive Mode
-Simply execute `USAS_Workspace_Launcher.bat`. On the first run, the script will securely prompt you for your credentials. These are saved to a hidden local `.env` file.
+Simply execute `USAS_Workspace_Launcher.bat`. On the first run, the script will securely prompt you for your credentials using masked terminal inputs. Passwords are saved directly to your encrypted **Windows Credential Manager**, while IDs are saved to a hidden local `.env` file.
 
 ### Daily Automation
 For every subsequent run, simply execute `USAS_Workspace_Launcher.bat` and watch it automatically:

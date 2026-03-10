@@ -28,6 +28,15 @@ If you are a network administrator or portal manager and wish to understand how 
 
 ---
 
+## 3. Local Credential Security
+
+The tool prioritizes local user security during the setup phase:
+- **Masked Inputs**: Utilizing the `pwinput` module, password entries during the initial command-line setup are masked with asterisks to prevent shoulder-surfing.
+- **Encrypted Storage**: Instead of storing credentials in plaintext `.env` files, the script exclusively leverages the `keyring` library to inject passwords directly into the host OS's native **Windows Credential Manager**.
+- **Segregated Data**: Only non-sensitive User IDs are tracked in the `.env` configuration file, ensuring the repository remains sterile and user passwords are untouchable by local file-system scraping.
+
+---
+
 ## Summary
 
 This tool dramatically accelerates the daily workflow of USAS students by automating routine HTML forms and open network connections. Implementations of CAPTCHA, 2FA, or heavily obfuscated login endpoints are required if the goal is to enforce manual, non-automated human presence at the time of login.

@@ -49,6 +49,7 @@ The process described here has several goals:
 - Use [Black](https://github.com/psf/black) for code formatting.
 - Write clean, readable code with comments where necessary.
 - Ensure all automated actions gracefully catch exceptions such as `TimeoutException` or `NoSuchElementException`.
+- **Security First**: Never hardcode or log any user passwords. Rely on the `keyring` library for secure password storage and `python-dotenv` exclusively for non-sensitive data like IDs.
 
 ### Git Commit Messages
 
