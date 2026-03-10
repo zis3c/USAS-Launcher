@@ -1,0 +1,35 @@
+==========================================
+      USAS Auto-Startup Initializing
+==========================================
+connecting to WiFi network 'WIFI@USAS'...
+Connection request was completed successfully.
+
+Setting up Python Environment...
+Activating environment...
+Installing/Verifying requirements...
+
+[notice] A new release of pip is available: 24.2 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+Launching Automation...
+=== USAS Automation Script Started ===
+First time setup: No .env file found.
+Please enter your credentials for each platform.
+These will be saved locally to a secure .env file on your computer.
+
+WiFi / Captive Portal ID: i24107504
+WiFi / Captive Portal Password: 031021101807
+
+
+LMS ID: i24107504
+LMS Password: radzi03
+
+
+VCampus ID: i24107504
+VCampus Password: Rradzi@2003
+.env file created successfully!
+
+Launching Chrome...
+
+An error occurred: [WinError 193] %1 is not a valid Win32 application
+Press Enter to exit...
