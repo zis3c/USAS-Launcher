@@ -9,9 +9,15 @@ set "CYAN=%ESC%[96m"
 set "GREEN=%ESC%[92m"
 set "YELLOW=%ESC%[93m"
 set "RED=%ESC%[91m"
+set "MAGENTA=%ESC%[95m"
 set "RESET=%ESC%[0m"
 
 cls
+echo.
+echo %MAGENTA%=======================================================%RESET%
+echo %MAGENTA%              USAS Workspace Launcher%RESET%
+echo %MAGENTA%=======================================================%RESET%
+echo.
 
 :: 1. Connect to WiFi
 echo %CYAN%[*]%RESET% Connecting to WiFi network 'WIFI@USAS'...
@@ -36,22 +42,22 @@ if not exist "venv\" (
 echo %CYAN%[*]%RESET% Activating environment...
 call venv\Scripts\activate.bat
 
-echo %CYAN%[*]%RESET% Installing/Verifying requirements...
-pip install -r requirements.txt -q
+echo %CYAN%[*]%RESET% Verifying dependencies...
+pip install -r requirements.txt -q --no-warn-script-location
 if %errorlevel% neq 0 (
     echo %YELLOW%[!]%RESET% Normal install failed ^(possible SSL error^). Trying trusted-host fallback...
-    pip install -r requirements.txt -q --trusted-host pypi.org --trusted-host files.pythonhosted.org
+    pip install -r requirements.txt -q --no-warn-script-location --trusted-host pypi.org --trusted-host files.pythonhosted.org
 )
 
 echo.
-echo %CYAN%-------------------------------------------------------%RESET%
-echo %CYAN%[*]%RESET% Launching Browser Automation...
-echo %CYAN%-------------------------------------------------------%RESET%
+echo %MAGENTA%-------------------------------------------------------%RESET%
+echo %MAGENTA%[*]%RESET% Launching Browser Automation...
+echo %MAGENTA%-------------------------------------------------------%RESET%
 python usas_auth_controller.py
 
 echo.
-echo %CYAN%-------------------------------------------------------%RESET%
-echo %CYAN%[*]%RESET% Opening USAS OneDrive Folder...
+echo %MAGENTA%-------------------------------------------------------%RESET%
+echo %MAGENTA%[*]%RESET% Opening USAS OneDrive Folder...
 explorer "C:\Users\RADZ\OneDrive - Universiti Sultan Azlan Shah (1)"
 
 echo.

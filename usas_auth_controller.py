@@ -13,15 +13,17 @@ try:
     import colorama
     from colorama import init, Fore, Style
     init(autoreset=True)
-    def print_info(msg): print(f"{Fore.CYAN}[*] {Style.RESET_ALL}{msg}")
+    def print_info(msg): print(f"{Fore.BLUE}[*] {Style.RESET_ALL}{msg}")
     def print_success(msg): print(f"{Fore.GREEN}[+] {Style.RESET_ALL}{msg}")
     def print_warn(msg): print(f"{Fore.YELLOW}[!] {Style.RESET_ALL}{msg}")
     def print_err(msg): print(f"{Fore.RED}[X] {Style.RESET_ALL}{msg}")
+    def print_prompt(msg): print(f"{Fore.MAGENTA}[>] {Style.RESET_ALL}{msg}")
 except ImportError:
     def print_info(msg): print(f"[*] {msg}")
     def print_success(msg): print(f"[+] {msg}")
     def print_warn(msg): print(f"[!] {msg}")
     def print_err(msg): print(f"[X] {msg}")
+    def print_prompt(msg): print(f"[>] {msg}")
 
 try:
     import pwinput
@@ -48,20 +50,23 @@ def setup_credentials():
     vcampus_pass = keyring.get_password(APP_NAME, 'VCAMPUS_PASS')
 
     if not all([wifi_id, lms_id, vcampus_id, wifi_pass, lms_pass, vcampus_pass]):
-        print_info("First time setup or credentials missing.")
-        print_info("Please enter your credentials for each platform.")
-        print_info("IDs will be saved in .env, Passwords will be saved securely in Windows Credential Manager.\n")
+        print_prompt("First time setup or credentials missing.")
+        time.sleep(0.5)
+        print_prompt("Please enter your credentials for each platform.")
+        time.sleep(0.5)
+        print_prompt("IDs will be saved in .env, Passwords will be saved securely in Windows Credential Manager.\n")
+        time.sleep(0.5)
         
-        wifi_id = input("WiFi / Captive Portal ID: ").strip()
-        wifi_pass = get_password("WiFi / Captive Portal Password: ").strip()
+        wifi_id = input(f"{Fore.CYAN}WiFi / Captive Portal ID:{Style.RESET_ALL} ").strip()
+        wifi_pass = get_password(f"{Fore.CYAN}WiFi / Captive Portal Password:{Style.RESET_ALL} ").strip()
         
         print("\n")
-        lms_id = input("LMS ID: ").strip()
-        lms_pass = get_password("LMS Password: ").strip()
+        lms_id = input(f"{Fore.CYAN}LMS ID:{Style.RESET_ALL} ").strip()
+        lms_pass = get_password(f"{Fore.CYAN}LMS Password:{Style.RESET_ALL} ").strip()
         
         print("\n")
-        vcampus_id = input("VCampus ID: ").strip()
-        vcampus_pass = get_password("VCampus Password: ").strip()
+        vcampus_id = input(f"{Fore.CYAN}VCampus ID:{Style.RESET_ALL} ").strip()
+        vcampus_pass = get_password(f"{Fore.CYAN}VCampus Password:{Style.RESET_ALL} ").strip()
         
         # Create .env and set ID keys
         with open(ENV_FILE, 'w') as f:
