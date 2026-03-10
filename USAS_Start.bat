@@ -38,6 +38,10 @@ call venv\Scripts\activate.bat
 
 echo %CYAN%[*]%RESET% Installing/Verifying requirements...
 pip install -r requirements.txt -q
+if %errorlevel% neq 0 (
+    echo %YELLOW%[!]%RESET% Normal install failed ^(possible SSL error^). Trying trusted-host fallback...
+    pip install -r requirements.txt -q --trusted-host pypi.org --trusted-host files.pythonhosted.org
+)
 
 echo.
 echo %CYAN%-------------------------------------------------------%RESET%
