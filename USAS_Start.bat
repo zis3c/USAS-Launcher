@@ -14,9 +14,9 @@ set "RESET=%ESC%[0m"
 
 cls
 echo.
-echo %MAGENTA%=======================================================%RESET%
-echo %MAGENTA%              USAS Workspace Launcher%RESET%
-echo %MAGENTA%=======================================================%RESET%
+echo %YELLOW%=======================================================%RESET%
+echo %YELLOW%              USAS Workspace Launcher%RESET%
+echo %YELLOW%=======================================================%RESET%
 echo.
 
 :: 1. Connect to WiFi
@@ -50,14 +50,14 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo %MAGENTA%-------------------------------------------------------%RESET%
-echo %MAGENTA%[*]%RESET% Launching Browser Automation...
-echo %MAGENTA%-------------------------------------------------------%RESET%
+echo %YELLOW%-------------------------------------------------------%RESET%
+echo %YELLOW%[*]%RESET% Launching Browser Automation...
+echo %YELLOW%-------------------------------------------------------%RESET%
 python usas_auth_controller.py
 
 echo.
-echo %MAGENTA%-------------------------------------------------------%RESET%
-echo %MAGENTA%[*]%RESET% Opening USAS OneDrive Folder...
+echo %YELLOW%-------------------------------------------------------%RESET%
+echo %YELLOW%[*]%RESET% Opening USAS OneDrive Folder...
 explorer "C:\Users\RADZ\OneDrive - Universiti Sultan Azlan Shah (1)"
 
 echo.

@@ -17,7 +17,7 @@ try:
     def print_success(msg): print(f"{Fore.GREEN}[+] {Style.RESET_ALL}{msg}")
     def print_warn(msg): print(f"{Fore.YELLOW}[!] {Style.RESET_ALL}{msg}")
     def print_err(msg): print(f"{Fore.RED}[X] {Style.RESET_ALL}{msg}")
-    def print_prompt(msg): print(f"{Fore.MAGENTA}[>] {Style.RESET_ALL}{msg}")
+    def print_prompt(msg): print(f"{Fore.YELLOW}[>] {Style.RESET_ALL}{msg}")
 except ImportError:
     def print_info(msg): print(f"[*] {msg}")
     def print_success(msg): print(f"[+] {msg}")
