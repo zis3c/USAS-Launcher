@@ -8,7 +8,7 @@
 ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)
 
 <p align="center">
-  <img src="preview.png" alt="USAS Workspace Launcher Preview" width="800">
+  <img src="preview.png" alt="USAS Workspace Launcher Preview" width="600">
 </p>
 
 A high-performance, automated workspace initialization suite built with Python and Selenium. Capable of instantly connecting to the campus network and securely authenticating into essential academic platforms without user interaction.
