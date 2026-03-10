@@ -13,8 +13,8 @@
 
 A high-performance, automated workspace initialization suite built with Python and Selenium. Capable of instantly connecting to the campus network and securely authenticating into essential academic platforms without user interaction.
 
-> [!WARNING]
-> **Educational Purposes Only**: This tool is designed to optimize personal workflow. The authors are not responsible for any misuse.
+> [!NOTE]
+> **Personal Use**: This tool authenticates using your real student credentials. Ensure your usage complies with university IT policies. Only use this to access academic portals you have legitimate access to.
 
 ## Features
 
