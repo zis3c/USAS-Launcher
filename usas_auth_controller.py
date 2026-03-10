@@ -22,6 +22,13 @@ except ImportError:
     def print_warn(msg): print(f"[!] {msg}")
     def print_err(msg): print(f"[X] {msg}")
 
+try:
+    import pwinput
+    def get_password(prompt): return pwinput.pwinput(prompt, mask='*')
+except ImportError:
+    import getpass
+    def get_password(prompt): return getpass.getpass(prompt)
+
 # --- Configuration Setup ---
 ENV_FILE = '.env'
 
@@ -33,15 +40,15 @@ def setup_credentials():
         print_info("These will be saved locally to a secure .env file on your computer.\n")
         
         wifi_id = input("WiFi / Captive Portal ID: ").strip()
-        wifi_pass = input("WiFi / Captive Portal Password: ").strip()
+        wifi_pass = get_password("WiFi / Captive Portal Password: ").strip()
         
         print("\n")
         lms_id = input("LMS ID: ").strip()
-        lms_pass = input("LMS Password: ").strip()
+        lms_pass = get_password("LMS Password: ").strip()
         
         print("\n")
         vcampus_id = input("VCampus ID: ").strip()
-        vcampus_pass = input("VCampus Password: ").strip()
+        vcampus_pass = get_password("VCampus Password: ").strip()
         
         # Create .env and set keys securely
         with open(ENV_FILE, 'w') as f:
