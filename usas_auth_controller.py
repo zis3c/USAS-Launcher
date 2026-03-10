@@ -1,6 +1,7 @@
 import os
 import time
 from dotenv import load_dotenv, set_key
+import keyring
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -31,13 +32,25 @@ except ImportError:
 
 # --- Configuration Setup ---
 ENV_FILE = '.env'
+APP_NAME = 'USAS_Launcher'
 
 def setup_credentials():
-    """Check for credentials in .env, prompt if missing."""
-    if not os.path.exists(ENV_FILE):
-        print_info("First time setup: No .env file found.")
+    """Check for credentials in .env and keyring, prompt if missing."""
+    load_dotenv(ENV_FILE)
+    
+    # Check if IDs exist in .env and passwords exist in keyring
+    wifi_id = os.getenv('WIFI_ID')
+    lms_id = os.getenv('LMS_ID')
+    vcampus_id = os.getenv('VCAMPUS_ID')
+    
+    wifi_pass = keyring.get_password(APP_NAME, 'WIFI_PASS')
+    lms_pass = keyring.get_password(APP_NAME, 'LMS_PASS')
+    vcampus_pass = keyring.get_password(APP_NAME, 'VCAMPUS_PASS')
+
+    if not all([wifi_id, lms_id, vcampus_id, wifi_pass, lms_pass, vcampus_pass]):
+        print_info("First time setup or credentials missing.")
         print_info("Please enter your credentials for each platform.")
-        print_info("These will be saved locally to a secure .env file on your computer.\n")
+        print_info("IDs will be saved in .env, Passwords will be saved securely in Windows Credential Manager.\n")
         
         wifi_id = input("WiFi / Captive Portal ID: ").strip()
         wifi_pass = get_password("WiFi / Captive Portal Password: ").strip()
@@ -50,17 +63,20 @@ def setup_credentials():
         vcampus_id = input("VCampus ID: ").strip()
         vcampus_pass = get_password("VCampus Password: ").strip()
         
-        # Create .env and set keys securely
+        # Create .env and set ID keys
         with open(ENV_FILE, 'w') as f:
             pass # Create empty file
             
         set_key(ENV_FILE, 'WIFI_ID', wifi_id)
-        set_key(ENV_FILE, 'WIFI_PASS', wifi_pass)
         set_key(ENV_FILE, 'LMS_ID', lms_id)
-        set_key(ENV_FILE, 'LMS_PASS', lms_pass)
         set_key(ENV_FILE, 'VCAMPUS_ID', vcampus_id)
-        set_key(ENV_FILE, 'VCAMPUS_PASS', vcampus_pass)
-        print_success(".env file created successfully!\n")
+        
+        # Save passwords securely in keyring
+        if wifi_pass: keyring.set_password(APP_NAME, 'WIFI_PASS', wifi_pass)
+        if lms_pass: keyring.set_password(APP_NAME, 'LMS_PASS', lms_pass)
+        if vcampus_pass: keyring.set_password(APP_NAME, 'VCAMPUS_PASS', vcampus_pass)
+        
+        print_success("Credentials saved securely!\n")
     
     load_dotenv(ENV_FILE)
     creds = {
