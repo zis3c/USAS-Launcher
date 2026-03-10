@@ -85,9 +85,9 @@ def setup_credentials():
     
     load_dotenv(ENV_FILE)
     creds = {
-        'wifi': (os.getenv('WIFI_ID'), os.getenv('WIFI_PASS')),
-        'lms': (os.getenv('LMS_ID'), os.getenv('LMS_PASS')),
-        'vcampus': (os.getenv('VCAMPUS_ID'), os.getenv('VCAMPUS_PASS'))
+        'wifi': (os.getenv('WIFI_ID'), keyring.get_password(APP_NAME, 'WIFI_PASS')),
+        'lms': (os.getenv('LMS_ID'), keyring.get_password(APP_NAME, 'LMS_PASS')),
+        'vcampus': (os.getenv('VCAMPUS_ID'), keyring.get_password(APP_NAME, 'VCAMPUS_PASS'))
     }
     
     # Simple validation to ensure none of them returned None
