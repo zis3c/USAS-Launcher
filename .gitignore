@@ -15,3 +15,6 @@ __pycache__/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Chrome Automation Profiles
+AutomationProfile/
